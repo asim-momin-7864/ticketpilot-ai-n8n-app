@@ -55,7 +55,11 @@ export default function SupportHomePage() {
 
       // check
       if (!res.ok) {
-        throw new Error("Failed to create ticket");
+        const errorData = await res.json().catch(() => null);
+        throw new Error(
+          (errorData && (errorData.error || errorData.message)) ||
+            "Failed to create ticket",
+        );
       }
 
       const data = await res.json();
@@ -130,7 +134,7 @@ export default function SupportHomePage() {
                     />
                   )}
                 </div>
-                <div className="flex-1 overflow-x-auto break-words font-mono text-xs">
+                <div className="flex-1 overflow-x-auto break-words font-mono text-xs whitespace-pre-wrap leading-relaxed">
                   {status}
                 </div>
               </div>
