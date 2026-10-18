@@ -1,0 +1,82 @@
+Ticket #1
+Customer: sarah.connor@cyberdyne.io
+Subject: Refund request for accidental annual upgrade
+Message: Hi support team, I accidentally clicked on the annual upgrade button instead of monthly yesterday. Can you please reverse this charge and refund my card? Thanks, Sarah.
+
+Ticket #2
+Customer: michael.scott@dundermifflin.com
+Subject: Locked out of account after password reset
+Message: Hello, I tried resetting my password this morning but now it says my account is locked due to multiple failed login attempts. Can someone unlock it quickly? We have a client meeting in an hour!
+
+Ticket #3
+Customer: alex.chen@startup.io
+Subject: Question about API rate limits
+Message: Hey team, we are scaling our integration on the Pro tier. Could you clarify if the rate limit of 1,000 requests per minute applies per API key or per user account?
+
+Ticket #4
+Customer: bruce.wayne@waynecorp.com
+Subject: Billing inquiry on enterprise invoice #9821
+Message: Good day. Our finance department noticed a discrepancy in the enterprise tier billing cycle for October. Please have an account manager contact me to review the line items.
+
+Ticket #5
+Customer: clark.kent@dailyplanet.com
+Subject: Minor UI glitch on the dark mode settings toggle
+Message: Hi, just wanted to report a small visual bug. When switching to dark mode on the mobile web view, the settings dropdown menu overlaps slightly with the navigation bar. Not urgent, just a heads up.
+
+Ticket #6
+Customer: peter.parker@bugle.net
+Subject: Double charged for subscription renewal
+Message: Hello, I checked my bank statement today and noticed I was billed twice for my monthly subscription on October 15th. Can you please look into this duplicate charge and issue a refund?
+
+Ticket #7
+Customer: tony.stark@starkindustries.com
+Subject: Custom webhook payload failure
+Message: Support, we are seeing 500 internal server errors when sending payloads larger than 5MB to our custom webhook endpoint. Is there a strict payload size limit we should be aware of?
+
+Ticket #8
+Customer: natasha.romanoff@shield.gov
+Subject: Password reset link expired prematurely
+Message: I requested a password reset link about 10 minutes ago, but when I click it, it says the token is already expired. Could you please send a fresh link?
+
+Ticket #9
+Customer: steve.rogers@brooklyn.org
+Subject: General feedback on onboarding documentation
+Message: Hello team, I really enjoyed setting up the software. The onboarding guide was very clear, though it would be nice to have a quick example for setting up custom domains. Keep up the good work.
+
+Ticket #10
+Customer: barry.allen@cc-p.org
+Subject: Critical server downtime affecting production
+Message: Urgent! Our production environment lost connection to your database cluster a few minutes ago. All incoming requests are timing out. Please investigate immediately!
+
+
+----------------------------------
+
+Here are 5 simple dummy tickets that will be classified as **LOW urgency** (e.g., general inquiries, minor non-blocking issues, and feature requests) and route directly to the **Auto Resolve / `AUTO_SENT**` branch:
+
+```text
+Ticket #11
+Customer: emily.blunt@designstudio.com
+Subject: How to change the dashboard theme to dark mode?
+Message: Hello support team. I recently started using your platform and prefer working in dark mode. Could you point me to the settings page where I can toggle the interface theme? Thank you.
+
+Ticket #12
+Customer: david.miller@techcorp.io
+Subject: Looking for API documentation for the billing endpoint
+Message: Hi there, our engineering team is trying to integrate your billing API into our internal dashboard. Where can we find the developer documentation and rate limits for the billing endpoints?
+
+Ticket #13
+Customer: sophia.chen@marketingpro.net
+Subject: Feature request: Export reports to CSV
+Message: Hello, I love using your analytics dashboard. However, it would be incredibly helpful if there was a button to export the monthly metrics directly to a CSV file. Is this something on your roadmap?
+
+Ticket #14
+Customer: james.holden@rocinante.org
+Subject: Question regarding your SLA response times
+Message: Good afternoon. We are currently evaluating your standard tier versus the enterprise tier. Could you please clarify your standard Service Level Agreement (SLA) for non-critical bugs? 
+
+Ticket #15
+Customer: olivia.williams@freelance.co
+Subject: Minor typo on the user profile page
+Message: Hi team, I just wanted to report a very minor issue. On the user profile settings page, the word "Notifications" is misspelled as "Notifcations". It doesn't affect functionality, just thought you should know!
+
+```
