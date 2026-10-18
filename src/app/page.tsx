@@ -8,6 +8,7 @@ import {
   AlertCircleIcon,
   CheckmarkCircle02Icon,
   Loading03Icon,
+  Clock01Icon,
 } from "@hugeicons/core-free-icons";
 
 import { Button } from "@/components/ui/button";
@@ -24,15 +25,18 @@ import {
 
 export default function SupportHomePage() {
   // to store repsone
-  const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: string;
+    message: string;
+  } | null>(null);
 
   // handle submit
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsSubmitting(true);
-    setStatus("Sending to n8n...");
+    setStatus(null);
 
     // payload
     const formData = new FormData(e.currentTarget);
@@ -63,26 +67,37 @@ export default function SupportHomePage() {
       }
 
       const data = await res.json();
-      setStatus(
-        typeof data === "string" ? data : JSON.stringify(data, null, 2),
-      );
+
+      // state to show user
+      if (data.actionRequired === "PENDING_HUMAN_APPROVAL") {
+        setStatus({
+          type: "review",
+          message: `Ticket #${data.ticketId?.slice(0, 6) || "101"} received. Your issue has been marked as high priority and escalated to our human support team. We will email you shortly.`,
+        });
+      } else {
+        setStatus({
+          type: "auto",
+          message: `Ticket received! We have automatically dispatched an email to ${payload.email} with steps to resolve your issue.`,
+        });
+      }
+
       formElement.reset();
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setStatus(error.message);
+        setStatus({
+          type: "error",
+          message: error.message,
+        });
       } else {
-        setStatus("Failed to create ticket");
+        setStatus({
+          type: "error",
+          message: "Failed to create ticket",
+        });
       }
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const isError =
-    status.toLowerCase().includes("fail") ||
-    status.toLowerCase().includes("error");
-  const isPending = status.startsWith("Sending");
-  const isSuccess = status && !isError && !isPending;
 
   return (
     <div className="relative min-h-screen flex flex-1 items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
@@ -109,33 +124,42 @@ export default function SupportHomePage() {
             {status && (
               <div
                 className={`mb-6 flex items-start gap-3 rounded-xl border p-4 text-sm transition-all ${
-                  isPending
-                    ? "border-border bg-muted/70 text-muted-foreground"
-                    : isError
-                      ? "border-destructive/30 bg-destructive/10 text-destructive"
+                  status.type === "error"
+                    ? "border-destructive/30 bg-destructive/10 text-destructive"
+                    : status.type === "review"
+                      ? "border-amber-500/30 bg-amber-500/10 text-amber-900 dark:text-amber-200"
                       : "border-primary/30 bg-primary/10 text-primary"
                 }`}
               >
                 <div className="mt-0.5 shrink-0">
-                  {isPending ? (
-                    <HugeiconsIcon
-                      icon={Loading03Icon}
-                      className="size-4 animate-spin text-muted-foreground"
-                    />
-                  ) : isError ? (
+                  {status.type === "error" ? (
                     <HugeiconsIcon
                       icon={AlertCircleIcon}
-                      className="size-4 text-destructive"
+                      className="size-5 text-destructive"
+                    />
+                  ) : status.type === "review" ? (
+                    <HugeiconsIcon
+                      icon={Clock01Icon}
+                      className="size-5 text-amber-600 dark:text-amber-400"
                     />
                   ) : (
                     <HugeiconsIcon
                       icon={CheckmarkCircle02Icon}
-                      className="size-4 text-primary"
+                      className="size-5 text-primary"
                     />
                   )}
                 </div>
-                <div className="flex-1 overflow-x-auto break-words font-mono text-xs whitespace-pre-wrap leading-relaxed">
-                  {status}
+                <div className="flex-1 text-sm leading-relaxed text-foreground/90">
+                  <div className="font-semibold mb-0.5 text-xs uppercase tracking-wider">
+                    {status.type === "error"
+                      ? "Submission Failed"
+                      : status.type === "review"
+                        ? "Escalated for Human Review"
+                        : "Ticket Received"}
+                  </div>
+                  <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
+                    {status.message}
+                  </p>
                 </div>
               </div>
             )}
