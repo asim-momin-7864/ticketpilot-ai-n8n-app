@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TicketPilot AI (Next.js + Supabase + n8n)
+
+> 🚀 **Quick Supabase Re-Setup**: If you ever need to delete and recreate your Supabase instance (due to the 2-project free-tier limit), follow the step-by-step guide in [SUPABASE_SETUP.md](file:///Users/asimmomin7864/Dev/ticketpilot-ai-n8n-app/SUPABASE_SETUP.md) or execute [supabase_setup.sql](file:///Users/asimmomin7864/Dev/ticketpilot-ai-n8n-app/supabase_setup.sql) in the Supabase SQL Editor.
 
 ## Getting Started
 
